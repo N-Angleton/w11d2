@@ -11,10 +11,14 @@ import { receiveStep } from './actions/step_actions';
 import { receiveSteps } from './actions/step_actions';
 import { removeStep } from './actions/step_actions';
 
+import { allTodos } from './reducers/selectors';
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const root = document.getElementById('root');
     const store = configureStore(); 
     window.store = store;
+    
+    window.allTodos = allTodos;
 
     window.receiveTodo = receiveTodo;
     window.receiveTodos = receiveTodos;
