@@ -6,7 +6,7 @@ export function TodoList({receiveTodo, todos}) {
     return (
         <>
             <ul>
-                {todos.map( todo => <TodoListItem key={todo.id} todo={todo}/>)}
+                {todos.map( todo => <TodoListItem key={todo.id} todo={todo} receiveTodo={receiveTodo} />)}
             </ul>
             <TodoForm receiveTodo={receiveTodo}/>
         </>
