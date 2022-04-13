@@ -18,6 +18,7 @@ export class TodoForm extends React.Component {
     }
 
     handleClick(e){
+        debugger
         e.preventDefault();
         this.props.receiveTodo(this.state);
         this.setState({
