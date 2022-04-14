@@ -17,7 +17,7 @@ export class TodoListItem extends React.Component{
         }else{
             this.setState({
                 done: true
-            }); 
+            });
         }
         this.props.receiveTodo(this.state);
     }

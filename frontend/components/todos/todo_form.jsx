@@ -9,7 +9,7 @@ export class TodoForm extends React.Component {
             id: new Date().getTime(),
             title: '',
             body: '',
-            done: null
+            done: false
         };
         this.updateDone = this.updateDone.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
@@ -18,19 +18,25 @@ export class TodoForm extends React.Component {
     }
 
     handleClick(e){
-        debugger
+        // debugger
         e.preventDefault();
         this.props.receiveTodo(this.state);
+        let varia = this.state.done;
         this.setState({
             id: new Date().getTime(),
             title: '',
             body: '',
-            done: null
+            done: false
         });
     }
 
     updateDone(e){
-        this.setState({done: e.target.value});
+        if (e.target.value === "true") {
+            this.setState({ done: true });
+        }
+        else {
+            this.setState({done: false});
+        }
     }
     
     updateBody(e){
@@ -47,20 +53,20 @@ export class TodoForm extends React.Component {
                 <label>Title: 
                     <input type="text" onChange={this.updateTitle} value={this.state.title}/>
                 </label>
-                <br />
+                <br/>
                 <label>Body: 
                     <input type="text" onChange={this.updateBody} value={this.state.body}/>
                 </label>
                 <br/>
                 <label>Done:
                     <label>True: 
-                        <input type="radio" onChange={this.updateDone} name="done" value="true" />
+                        <input type="radio" onChange={this.updateDone} name="done" value="true" checked={this.state.done} />
                     </label>
                     <label>False: 
-                        <input type="radio" name="done" value="false" defaultChecked/>
+                        <input type="radio" onChange={this.updateDone} name="done" value="false" checked={!this.state.done}/>
                     </label>
                 </label>
-                <br />
+                <br/>
                 <button onClick={this.handleClick}>Submit</button>
             </form>
         )
